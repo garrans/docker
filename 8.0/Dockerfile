@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Odoo S.A. <info@odoo.com>
+MAINTAINER stephen@i.n.s.o.p.r.o.c.o.com
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN apt-get update \
@@ -44,6 +44,8 @@ ENV DB_FILTER postgres
 # Run script and Odoo configuration file
 COPY ./run.sh /
 COPY ./openerp-server.conf /etc/odoo/
+
+EXPOSE 8069
 
 # Mount /var/lib/odoo to allow restoring filestore
 VOLUME ["/var/lib/odoo"]

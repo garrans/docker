@@ -38,7 +38,11 @@ RUN curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odo
 RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 0xdef2a2198183cbb5 \
         && echo "deb http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/ ./" >> /etc/apt/sources.list
 
-ENV DB_FILTER postgres
+ENV DB_FILTER change_to_chosen_db
+ENV DB_ENV_POSTGRES_PASSWORD change_to_db_user_password
+ENV DB_ENV_POSTGRES_USER pg
+ENV DB_PORT_5432_TCP_ADDR ip_or_fqdn_of_db_server
+ENV DB_PORT_5432_TCP_PORT 5432
 
 
 # Run script and Odoo configuration file

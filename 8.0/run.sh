@@ -21,4 +21,4 @@ set_config "db_user" $DB_ENV_POSTGRES_USER
 set_config "db_password" $DB_ENV_POSTGRES_PASSWORD
 
 # start Odoo
-exec gosu odoo /usr/bin/openerp-server --config $CONFIG_FILE
+exec gosu odoo /usr/bin/openerp-server --db-filter $DB_FILTER --config $CONFIG_FILE

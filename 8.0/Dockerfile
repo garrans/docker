@@ -43,6 +43,8 @@ ENV DB_ENV_POSTGRES_PASSWORD change_to_db_user_password
 ENV DB_ENV_POSTGRES_USER pg
 ENV DB_PORT_5432_TCP_ADDR ip_or_fqdn_of_db_server
 ENV DB_PORT_5432_TCP_PORT 5432
+ENV VOLUME_MOUNT_1 /var/lib/odoo
+ENV VOLUME_MOUNT_2 /usr/lib/python2.7/dist-packages/openerp/addons
 
 
 # Run script and Odoo configuration file
@@ -52,6 +54,7 @@ COPY ./openerp-server.conf /etc/odoo/
 EXPOSE 8069
 
 # Mount /var/lib/odoo to allow restoring filestore
-VOLUME ["/var/lib/odoo"]
+VOLUME ["${VOLUME_MOUNT_1}"]
+VOLUME ["${VOLUME_MOUNT_2}"]
 
 CMD ["/run.sh"]
